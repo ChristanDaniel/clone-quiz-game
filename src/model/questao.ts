@@ -1,12 +1,12 @@
 import RespostaModel from "./resposta"
 
 export default class QuestaoModel {
-    #id: string
+    #id: number
     #enuciado: string
     #respostas: RespostaModel[]
     #acertou: boolean
 
-    constructor(id: string, enuciado: string, respostas: RespostaModel[], acertou = false) {
+    constructor(id: number, enuciado: string, respostas: RespostaModel[], acertou = false) {
         this.#id = id
         this.#enuciado = enuciado
         this.#respostas = respostas
