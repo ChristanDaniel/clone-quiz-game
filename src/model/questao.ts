@@ -38,6 +38,16 @@ export default class QuestaoModel {
         return false
     }
 
+    responderCom(indice: number): QuestaoModel {
+        const acertou = this.#respostas[indice]?.certa
+        const respostas = this.#respostas.map((resp, ind) => {
+            const respostaSelecionada = indice === ind
+            const deveRevelar = respostaSelecionada || resp.certa
+            return deveRevelar ? resp.revelar() : resp
+        })
+        return new QuestaoModel(this.#id, this.#enuciado, respostas, acertou)
+    }
+
     embaralharRespostas():QuestaoModel {
         let respostasEmbaralhadas = embaralhar(this.#respostas)
         return new QuestaoModel(this.#id, this.#enuciado, respostasEmbaralhadas, this.#acertou)
