@@ -5,7 +5,7 @@ interface EnuciadoProps {
     valor: RespostaModel
     indice: number
     letra: string
-    corLetra: string
+    backgroundLetra: string
 }
 
 export default function Resposta(props: EnuciadoProps) {
@@ -15,7 +15,7 @@ export default function Resposta(props: EnuciadoProps) {
         <div className={styles.resposta}>
             <div className={styles.conteudoResposta}>
                 <div className={styles.frente}>
-                    <div className={styles.letra}>{props.letra}</div>
+                    <div className={styles.letra} style={{ backgroundColor: props.backgroundLetra}}>{props.letra}</div>
                     <div className={styles.valor}>{resposta.valor}</div>
                 </div>
                 <div className={styles.verso}></div>

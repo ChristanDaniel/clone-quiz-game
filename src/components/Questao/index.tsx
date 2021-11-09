@@ -16,7 +16,7 @@ export default function Questao(props: QuestaoProps) {
             <Enuciado texto={questao.enuciado}/>
             {questao.respostas.map((resposta, ind) => {
                 return (
-                    <Resposta key={resposta.valor} valor={resposta} indice={ind} letra="A" corLetra="#F2C866"/>
+                    <Resposta key={resposta.valor} valor={resposta} indice={ind} letra="A" backgroundLetra="#F2C866"/>
                 )
             })}
         </div>
