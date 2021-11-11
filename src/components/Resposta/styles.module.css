@@ -20,6 +20,27 @@
   width: 100%;
 }
 
+.verso > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.certa {
+  background: #2BAA6D;
+}
+
+.errada {
+  background: #E44A4C;
+}
+
+.certa .valor .errada .valor {
+  font-size: 1.5rem;
+}
+
 .frente {
   align-items: center;
   border-radius: 12px;
