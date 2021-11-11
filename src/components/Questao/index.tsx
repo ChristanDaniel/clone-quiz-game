@@ -3,6 +3,7 @@ import Enuciado from "../Enuciado";
 import styles from "./Questao.module.css"
 
 import Resposta from '../Resposta'
+import Temporizador from "../Temporizador";
 
 const letras = [
     { valor: 'A', cor: '#F2C866' },
@@ -14,6 +15,7 @@ const letras = [
 interface QuestaoProps {
     valor: QuestaoModel
     respostaFornecida: (indice: number) => void
+    tempoEsgotado: () => void
 }
 
 
@@ -22,15 +24,16 @@ export default function Questao(props: QuestaoProps) {
     return (
         <div className={styles.questao}>
             <Enuciado texto={questao.enuciado}/>
+            <Temporizador duracao={10} tempoEsgotado={props.tempoEsgotado}/>
             {questao.respostas.map((resposta, ind) => {
                 return (
                     <Resposta 
-                    key={resposta.valor}
-                    valor={resposta} 
-                    indice={ind} 
-                    letra={letras[ind].valor} 
-                    backgroundLetra={letras[ind].cor}
-                    respostaFornecida={props.respostaFornecida}
+                        key={resposta.valor}
+                        valor={resposta} 
+                        indice={ind} 
+                        letra={letras[ind].valor} 
+                        backgroundLetra={letras[ind].cor}
+                        respostaFornecida={props.respostaFornecida}
                     />
                 )
             })}
