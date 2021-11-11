@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Botao from '../src/components/Botao'
 import Questao from '../src/components/Questao'
 import Questionario from '../src/components/Questionario'
@@ -11,19 +11,39 @@ const questaoMock = new QuestaoModel(1, 'Melhor cor?', [
   RespostaModel.certa('Preto'),
   RespostaModel.errada('azul'),
   RespostaModel.errada('Pink'),
-
 ])
 
+const BASE_URL = 'http://localhost:3000/api'
+
 const Home: NextPage = () => {
+  const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
   const [questao, setQuestao] = useState(questaoMock)
 
-  function questaoRespondida(questao: QuestaoModel) {
+  async function carregarIdsDasQuestoes() {
+    const response = await fetch(`${BASE_URL}/questionario`)
+    const idsDasQuestoes = await response.json()
 
+    setIdsDasQuestoes(idsDasQuestoes)
+  }
+  
+  async function carregarQuestao(idQuestao: number) {
+    const response = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
+    const json = await response.json()
+
+    console.log(json)
   }
 
-  function irPraProximoPasso() {
-    
-  }
+  useEffect(() => {
+    carregarIdsDasQuestoes()
+  }, [])
+  
+  useEffect(() => {
+    idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0])
+  }, [idsDasQuestoes])
+
+  function questaoRespondida(questao: QuestaoModel) {}
+
+  function irPraProximoPasso() {}
 
   // function respostaFornecida(indice: number) {
   //   console.log(indice)
