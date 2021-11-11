@@ -13,6 +13,7 @@ const letras = [
 
 interface QuestaoProps {
     valor: QuestaoModel
+    respostaFornecida: (indice: number) => void
 }
 
 
@@ -23,7 +24,14 @@ export default function Questao(props: QuestaoProps) {
             <Enuciado texto={questao.enuciado}/>
             {questao.respostas.map((resposta, ind) => {
                 return (
-                    <Resposta key={resposta.valor} valor={resposta} indice={ind} letra={letras[ind].valor} backgroundLetra={letras[ind].cor}/>
+                    <Resposta 
+                    key={resposta.valor}
+                    valor={resposta} 
+                    indice={ind} 
+                    letra={letras[ind].valor} 
+                    backgroundLetra={letras[ind].cor}
+                    respostaFornecida={props.respostaFornecida}
+                    />
                 )
             })}
         </div>
