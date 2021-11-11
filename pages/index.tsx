@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
+import Botao from '../src/components/Botao'
 import Questao from '../src/components/Questao'
 import QuestaoModel from '../src/model/questao'
 import RespostaModel from '../src/model/resposta'
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
         tempoEsgotado={tempoEsgotado}
         tempoPraResposta={5}
       />
+      <Botao texto={'Olá'}></Botao>
     </div>
   )
 }
