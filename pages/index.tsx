@@ -29,8 +29,9 @@ const Home: NextPage = () => {
   async function carregarQuestao(idQuestao: number) {
     const response = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
     const json = await response.json()
+    const novaQuestao = QuestaoModel.criarUsandoObjeto(json)
 
-    console.log(json)
+    setQuestao(novaQuestao)
   }
 
   useEffect(() => {
