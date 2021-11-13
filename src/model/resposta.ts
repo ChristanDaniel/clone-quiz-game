@@ -1,7 +1,7 @@
 export default class RespostaModel {
     #valor: string
     #certa: boolean
-    #revelada: boolean
+    #revelada: boolean  
 
     constructor (valor: string, certa: boolean, revelada = false) {
         this.#valor = valor

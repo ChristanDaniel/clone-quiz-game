@@ -17,11 +17,14 @@ const BASE_URL = 'http://localhost:3000/api'
 
 const Home: NextPage = () => {
   const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
-  const [questao, setQuestao] = useState(questaoMock)
+  const [questao, setQuestao] = useState<QuestaoModel>(questaoMock)
+  const [respostasCertas, setRespostasCertas] = useState<number>(0)
+
 
   async function carregarIdsDasQuestoes() {
     const response = await fetch(`${BASE_URL}/questionario`)
     const idsDasQuestoes = await response.json()
+    console.log(idsDasQuestoes)
 
     setIdsDasQuestoes(idsDasQuestoes)
   }
@@ -29,8 +32,9 @@ const Home: NextPage = () => {
   async function carregarQuestao(idQuestao: number) {
     const response = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
     const json = await response.json()
-    const novaQuestao = QuestaoModel.criarUsandoObjeto(json)
+    console.log('TESTEE', QuestaoModel.criarUsandoObjeto(json))
 
+    const novaQuestao = QuestaoModel.criarUsandoObjeto(json)
     setQuestao(novaQuestao)
   }
 
@@ -42,20 +46,11 @@ const Home: NextPage = () => {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0])
   }, [idsDasQuestoes])
 
-  function questaoRespondida(questao: QuestaoModel) {}
+  function questaoRespondida(questaoRespondida: QuestaoModel) {
+    setQuestao(questaoRespondida)
+  }
 
   function irPraProximoPasso() {}
-
-  // function respostaFornecida(indice: number) {
-  //   console.log(indice)
-  //   setQuestao(questao.responderCom(indice))
-  // }
-
-  // function tempoEsgotado() {
-  //   if (!questao.respondida) {
-  //     setQuestao(questao.responderCom(-1))
-  //   }
-  // }
 
   return (
     <div>

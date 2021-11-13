@@ -4,7 +4,7 @@ import RespostaModel from "./resposta"
 export default class QuestaoModel {
     #id: number
     #enuciado: string
-    #respostas: RespostaModel[]
+    #respostas: RespostaModel[]   /////
     #acertou: boolean
 
     constructor(id: number, enuciado: string, respostas: RespostaModel[], acertou = false) {
@@ -55,7 +55,7 @@ export default class QuestaoModel {
 
     static criarUsandoObjeto(obj: QuestaoModel): QuestaoModel {
         const respostas = obj.respostas.map(resp => RespostaModel.criarUsandoObjeto(resp))
-        return new QuestaoModel(obj.id, obj.enuciado, respostas , obj.acertou)
+        return new QuestaoModel(obj.id, obj.enuciado, respostas, obj.acertou)
     }
 
     paraObjeto() {
@@ -64,7 +64,7 @@ export default class QuestaoModel {
             enuciado: this.#enuciado,
             acertou: this.#acertou,
             respondida: this.respondida,
-            resposta: this.#respostas.map(resp => resp.paraObjeto()),
+            respostas: this.#respostas.map(resp => resp.paraObjeto()),
         }
     }
 }
