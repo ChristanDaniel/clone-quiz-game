@@ -28,8 +28,8 @@ export default function Questao(props: QuestaoProps) {
             <Temporizador key={questao.id} duracao={props.tempoPraResposta ?? 10} tempoEsgotado={props.tempoEsgotado}/>
             {questao.respostas.map((resposta, ind) => {
                 return (
-                    <Resposta 
-                        key={resposta.valor}
+                    <Resposta
+                        key={`${questao.id}-${ind}`}
                         valor={resposta} 
                         indice={ind} 
                         letra={letras[ind].valor} 
