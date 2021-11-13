@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import router from 'next/dist/client/router'
 import { useEffect, useState } from 'react'
 import Botao from '../src/components/Botao'
 import Questao from '../src/components/Questao'
@@ -48,9 +49,34 @@ const Home: NextPage = () => {
 
   function questaoRespondida(questaoRespondida: QuestaoModel) {
     setQuestao(questaoRespondida)
+
+    const acertou = questaoRespondida.acertou
+    setRespostasCertas(respostasCertas + (acertou ? 1 : 0))
   }
 
-  function irPraProximoPasso() {}
+  function idProximaPergunta() {
+    const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1
+    return idsDasQuestoes[proximoIndice]
+  }
+
+  function irPraProximoPasso() {
+    const proximoId = idProximaPergunta()
+    proximoId ? irPraProximaQuestao(proximoId) : finalizar()
+  }
+
+  function irPraProximaQuestao(proximoId: number) {
+    carregarQuestao(proximoId)
+  }
+
+  function finalizar() {
+    router.push({
+      pathname: "/resultado",
+      query: {
+        total: idsDasQuestoes.length,
+        certas: respostasCertas
+      }
+    })
+  }
 
   return (
     <div>
