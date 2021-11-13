@@ -25,7 +25,7 @@ export default function Questao(props: QuestaoProps) {
     return (
         <div className={styles.questao}>
             <Enuciado texto={questao.enuciado}/>
-            <Temporizador duracao={props.tempoPraResposta ?? 10} tempoEsgotado={props.tempoEsgotado}/>
+            <Temporizador key={questao.id} duracao={props.tempoPraResposta ?? 10} tempoEsgotado={props.tempoEsgotado}/>
             {questao.respostas.map((resposta, ind) => {
                 return (
                     <Resposta 
