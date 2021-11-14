@@ -1,4 +1,5 @@
 import { useRouter } from "next/dist/client/router";
+import Botao from "../src/components/Botao";
 import Estatistica from "../src/components/Estatistica";
 import styles from "../styles/resultado.module.css";
 
@@ -20,6 +21,7 @@ export default function Resultado() {
           corFundo="#DE6A33"
         />
       </div>
+      <Botao href="/" texto="Tentar Novamente"/>
     </div>
   );
 }
