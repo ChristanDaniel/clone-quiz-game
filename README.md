@@ -11,6 +11,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [TypeScript](https://www.typescriptlang.org/) <img align='left' alt='TypeScript' width='35px' src="https://img.icons8.com/color/48/000000/typescript.png"/>
 
+
+https://user-images.githubusercontent.com/80167149/142555458-83c5a2f3-9624-4f52-9a02-ecd0ddcafd54.mp4
+
+
 ## 🔗 Como executar
 
 - Clone o repositório
@@ -18,3 +22,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Inicie o servidor com `yarn dev`
 
 Tudo Pronto? Agora é só acessar [`localhost:3000`](http://localhost:3000) do seu navegador.
+
+
+
